@@ -11,7 +11,7 @@ const LoginPage = () => {
           className="absolute inset-0 h-full w-full rounded-md object-cover dark:brightness-[0.2] dark:grayscale"
         />
       </div>
-      <div className="flex flex-col gap-4 p-3 md:p-10">
+      <div className="flex flex-col gap-4 p-5 md:p-10">
         <div className="flex justify-center gap-2 md:justify-start">
           <a href="#" className="flex items-center gap-2 font-medium">
             <div className="flex size-14 items-center justify-center rounded-md md:size-10">
