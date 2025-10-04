@@ -14,10 +14,12 @@ const LoginPage = () => {
       <div className="flex flex-col gap-4 p-3 md:p-10">
         <div className="flex justify-center gap-2 md:justify-start">
           <a href="#" className="flex items-center gap-2 font-medium">
-            <div className="flex size-9 items-center justify-center rounded-md">
+            <div className="flex size-14 items-center justify-center rounded-md md:size-10">
               <img src={SchoolLogo} alt="School Logo" />
             </div>
-            Holy Child Central Colleges Inc.
+            <span className="hidden md:block">
+              Holy Child Central Colleges Inc.
+            </span>
           </a>
         </div>
         <div className="flex flex-1 items-center justify-center">
