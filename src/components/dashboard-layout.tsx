@@ -1,15 +1,11 @@
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "./ui/sidebar";
 import { AppSidebar } from "./app-sidebar";
 import { Outlet } from "react-router";
-import { Separator } from "@radix-ui/react-separator";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "./ui/breadcrumb";
+import { ModeToggle } from "./mode-toggle";
+import { Bell, MessageCircleMore } from "lucide-react";
+import { Button } from "./ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { Separator } from "./ui/separator";
 
 const DashboardLayout = () => {
   return (
@@ -17,25 +13,31 @@ const DashboardLayout = () => {
       <AppSidebar />
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
-          <div className="flex items-center gap-2 px-4">
-            <SidebarTrigger className="-ml-1" />
-            <Separator
-              orientation="vertical"
-              className="mr-2 data-[orientation=vertical]:h-4"
-            />
-            <Breadcrumb>
-              <BreadcrumbList>
-                <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink href="#">
-                    Building Your Application
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator className="hidden md:block" />
-                <BreadcrumbItem>
-                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-                </BreadcrumbItem>
-              </BreadcrumbList>
-            </Breadcrumb>
+          <div className="flex w-full items-center justify-between gap-2 px-4">
+            <div className="flex items-center">
+              <SidebarTrigger className="-ml-1" />
+              <Separator
+                orientation="vertical"
+                className="mr-2 data-[orientation=vertical]:h-4"
+              />
+              <p>Welcome back, John - 1st Sem - SY. 2025</p>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <Button variant={"link"}>
+                <Bell className="h-[1.5rem] w-[1.5rem]" />
+              </Button>
+
+              {/* <Button variant={"link"}> */}
+              <MessageCircleMore className="text-primary h-6 w-6 stroke-current" />
+
+              {/* </Button> */}
+              <ModeToggle />
+
+              <Avatar>
+                <AvatarImage src="https://github.com/shadcn.png" />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+            </div>
           </div>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
@@ -43,22 +45,6 @@ const DashboardLayout = () => {
         </div>
       </SidebarInset>
     </SidebarProvider>
-    // <SidebarProvider
-    //   style={
-    //     {
-    //       "--sidebar-width": "calc(var(--spacing) * 72)",
-    //       "--header-height": "calc(var(--spacing) * 12)",
-    //     } as React.CSSProperties
-    //   }
-    // >
-    //   <AppSidebar variant="inset" />
-    //   <SidebarInset>
-    //     <SiteHeader />
-    //     <div className="flex flex-1 flex-col">
-    //       <Outlet />
-    //     </div>
-    //   </SidebarInset>
-    // </SidebarProvider>
   );
 };
 
