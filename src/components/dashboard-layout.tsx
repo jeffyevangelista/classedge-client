@@ -1,26 +1,64 @@
-import { SidebarInset, SidebarProvider } from "./ui/sidebar";
+import { SidebarInset, SidebarProvider, SidebarTrigger } from "./ui/sidebar";
 import { AppSidebar } from "./app-sidebar";
-import { SiteHeader } from "./site-header";
 import { Outlet } from "react-router";
+import { Separator } from "@radix-ui/react-separator";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "./ui/breadcrumb";
 
 const DashboardLayout = () => {
   return (
-    <SidebarProvider
-      style={
-        {
-          "--sidebar-width": "calc(var(--spacing) * 72)",
-          "--header-height": "calc(var(--spacing) * 12)",
-        } as React.CSSProperties
-      }
-    >
-      <AppSidebar variant="inset" />
+    <SidebarProvider>
+      <AppSidebar />
       <SidebarInset>
-        <SiteHeader />
-        <div className="flex flex-1 flex-col">
+        <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
+          <div className="flex items-center gap-2 px-4">
+            <SidebarTrigger className="-ml-1" />
+            <Separator
+              orientation="vertical"
+              className="mr-2 data-[orientation=vertical]:h-4"
+            />
+            <Breadcrumb>
+              <BreadcrumbList>
+                <BreadcrumbItem className="hidden md:block">
+                  <BreadcrumbLink href="#">
+                    Building Your Application
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator className="hidden md:block" />
+                <BreadcrumbItem>
+                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
+          </div>
+        </header>
+        <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
           <Outlet />
         </div>
       </SidebarInset>
     </SidebarProvider>
+    // <SidebarProvider
+    //   style={
+    //     {
+    //       "--sidebar-width": "calc(var(--spacing) * 72)",
+    //       "--header-height": "calc(var(--spacing) * 12)",
+    //     } as React.CSSProperties
+    //   }
+    // >
+    //   <AppSidebar variant="inset" />
+    //   <SidebarInset>
+    //     <SiteHeader />
+    //     <div className="flex flex-1 flex-col">
+    //       <Outlet />
+    //     </div>
+    //   </SidebarInset>
+    // </SidebarProvider>
   );
 };
 
