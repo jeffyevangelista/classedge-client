@@ -8,12 +8,13 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import MSLogo from "@/assets/ms-logo.svg";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"form">) {
+  const navigate = useNavigate();
   return (
     <form className={cn("flex flex-col gap-6", className)} {...props}>
       <FieldGroup>
@@ -44,7 +45,11 @@ export function LoginForm({
         </Field>
         <FieldSeparator>Or continue with</FieldSeparator>
         <Field>
-          <Button variant="outline" type="button">
+          <Button
+            variant="outline"
+            type="button"
+            onClick={() => navigate("/dashboard")}
+          >
             <img src={MSLogo} alt="ms-logo" className="size-4" />
             Login with Microsoft
           </Button>

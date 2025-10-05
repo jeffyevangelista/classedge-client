@@ -4,7 +4,7 @@ import SchoolLogo from "@/assets/school-logo.png";
 const LoginPage = () => {
   return (
     <div className="grid min-h-svh md:p-2.5 lg:grid-cols-2">
-      <div className="bg-muted relative hidden lg:block">
+      <div className="relative hidden lg:block">
         <img
           src={BackgroundImage}
           alt="Image"
